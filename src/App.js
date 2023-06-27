@@ -1,12 +1,9 @@
-import Header from "./Header";
-import Nav from "./Nav";
-import Footer from "./Footer";
+import Layout from "./Layout";
 import Home from "./Home";
 import NewPost from "./NewPost";
 import PostPage from "./PostPage";
 import About from "./About";
 import Missing from "./Missing";
-import Layout from "./Layout";
 import Post from "./Post";
 import { Link, Routes, Route, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -73,15 +70,15 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <>
-        <Header title="React JS Blog"></Header>
-        <Nav search={search} setSearch={setSearch}></Nav>
-        <Routes>
-          {/* <Route element={<Layout />}> <- using nested route*/}
-          <Route path="/" element={<Home posts={searchResults} />} />
+    <Routes>
+      <Route
+        path="/"
+        element={<Layout search={search} setSearch={setSearch} />}
+      >
+        <Route index element={<Home posts={searchResults} />} />
+        <Route path="post">
           <Route
-            path="/post"
+            index
             element={
               <NewPost
                 handleSubmit={handleSubmit}
@@ -93,16 +90,14 @@ function App() {
             }
           />
           <Route
-            path="/post/:id"
+            path=":id"
             element={<PostPage posts={posts} handleDelete={handleDelete} />}
           />
-          <Route path="/about" element={<About />} />
-          {/* </Route> */}
-          <Route path="/*" element={<Missing />} />
-        </Routes>
-        <Footer></Footer>
-      </>
-    </div>
+        </Route>
+        <Route path="about" element={<About />} />
+        <Route path="*" element={<Missing />} />
+      </Route>
+    </Routes>
   );
 }
 

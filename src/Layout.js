@@ -1,23 +1,18 @@
-// import React from "react";
-// import Header from "./Header";
-// import Nav from "./Nav";
-// import Footer from "./Footer";
-// import Home from "./Home";
-// import { Outlet } from "react-router-dom";
-// import { useState, useEffect } from "react";
+import React from "react";
+import Header from "./Header";
+import Nav from "./Nav";
+import Footer from "./Footer";
+import { Outlet } from "react-router-dom";
 
-// const Layout = () => {
-  
-//   const [search, setSearch] = useState("");
-//   const [searchResults, setSearchResults] = useState([]);
+const Layout = ({ search, setSearch }) => {
+  return (
+    <div className="App">
+      <Header title="React JS Blog" />
+      <Nav search={search} setSearch={setSearch} />
+      <Outlet />
+      <Footer />
+    </div>
+  );
+};
 
-//   return (
-//     <>
-//       <Header title="React JS Blog"></Header>
-//       <Nav search={search} setSearch={setSearch}></Nav>
-//       <Outlet/>
-//     </>
-//   );
-// };
-
-// export default Layout;
+export default Layout;
