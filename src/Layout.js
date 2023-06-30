@@ -12,8 +12,8 @@ const Layout = () => {
       <DataProvider>
         <Nav />
         <Outlet />
+        <Footer />
       </DataProvider>
-      <Footer />
     </div>
   );
 };

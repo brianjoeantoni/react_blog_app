@@ -57,7 +57,7 @@ body {
 
 .Footer {
   padding: 0.75rem;
-  display: grid;
+  flex-direction: column;
   place-content: center;
 }
 
